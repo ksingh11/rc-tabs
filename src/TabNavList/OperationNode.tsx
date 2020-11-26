@@ -52,9 +52,14 @@ function OperationNode(
 
   const dropdownAriaLabel = locale?.dropdownAriaLabel;
 
+  useEffect(() => {
+    console.log("RenderingTabs:", tabs);
+  }, [tabs]);
+
   const menu = (
     <Menu
       onClick={({ key, domEvent }) => {
+        console.log("TabSelected:", key, domEvent);
         onTabClick(key, domEvent);
         setOpen(false);
       }}
@@ -80,6 +85,7 @@ function OperationNode(
   );
 
   function selectOffset(offset: -1 | 1) {
+    console.log("Setting offset:", offset);
     const enabledTabs = tabs.filter(tab => !tab.disabled);
     let selectedIndex = enabledTabs.findIndex(tab => tab.key === selectedKey) || 0;
     const len = enabledTabs.length;
@@ -95,6 +101,9 @@ function OperationNode(
   }
 
   function onKeyDown(e: React.KeyboardEvent) {
+
+    console.log("Key down event: ", e);
+
     const { which } = e;
 
     if (!open) {
@@ -126,6 +135,8 @@ function OperationNode(
 
   // ========================= Effect =========================
   useEffect(() => {
+    console.log("selectedKey updated:", selectedKey);
+
     // We use query element here to avoid React strict warning
     const ele = document.getElementById(selectedItemId);
     if (ele && ele.scrollIntoView) {
@@ -134,6 +145,7 @@ function OperationNode(
   }, [selectedKey]);
 
   useEffect(() => {
+    console.log("open status: ", open);
     if (!open) {
       setSelectedKey(null);
     }
@@ -156,10 +168,10 @@ function OperationNode(
     <Dropdown
       prefixCls={dropdownPrefix}
       overlay={menu}
-      trigger={['hover']}
+      trigger={['hover', 'click']}
       visible={open}
       transitionName={moreTransitionName}
-      onVisibleChange={setOpen}
+      onVisibleChange={(value) => {console.log("onVisibleChange: ", value); setOpen(value)}}
       overlayClassName={overlayClassName}
       mouseEnterDelay={0.1}
       mouseLeaveDelay={0.1}
