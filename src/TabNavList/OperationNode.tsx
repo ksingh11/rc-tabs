@@ -152,7 +152,7 @@ function OperationNode(
     [`${dropdownPrefix}-rtl`]: rtl
   })
 
-  const moreNode: React.ReactElement = mobile ? null : (
+  const moreNode: React.ReactElement = (
     <Dropdown
       prefixCls={dropdownPrefix}
       overlay={menu}
