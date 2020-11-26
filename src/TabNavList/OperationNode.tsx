@@ -171,9 +171,7 @@ function OperationNode(
       trigger={['hover', 'click']}
       visible={open}
       transitionName={moreTransitionName}
-      onVisibleChange={(value) => {
-      //console.log("onVisibleChange: ", value); 
-      setOpen(value)}}
+      onVisibleChange={setOpen}
       overlayClassName={overlayClassName}
       mouseEnterDelay={0.1}
       mouseLeaveDelay={0.1}

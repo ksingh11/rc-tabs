@@ -153,10 +153,7 @@ function OperationNode(_ref, ref) {
     trigger: ['hover', 'click'],
     visible: open,
     transitionName: moreTransitionName,
-    onVisibleChange: function onVisibleChange(value) {
-      //console.log("onVisibleChange: ", value); 
-      setOpen(value);
-    },
+    onVisibleChange: setOpen,
     overlayClassName: overlayClassName,
     mouseEnterDelay: 0.1,
     mouseLeaveDelay: 0.1
