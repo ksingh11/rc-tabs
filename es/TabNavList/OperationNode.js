@@ -38,15 +38,15 @@ function OperationNode(_ref, ref) {
   var popupId = "".concat(id, "-more-popup");
   var dropdownPrefix = "".concat(prefixCls, "-dropdown");
   var selectedItemId = selectedKey !== null ? "".concat(popupId, "-").concat(selectedKey) : null;
-  var dropdownAriaLabel = locale === null || locale === void 0 ? void 0 : locale.dropdownAriaLabel;
-  useEffect(function () {
-    console.log("RenderingTabs:", tabs);
-  }, [tabs]);
+  var dropdownAriaLabel = locale === null || locale === void 0 ? void 0 : locale.dropdownAriaLabel; //useEffect(() => {
+  //  console.log("RenderingTabs:", tabs);
+  //}, [tabs]);
+
   var menu = /*#__PURE__*/React.createElement(Menu, {
     onClick: function onClick(_ref2) {
       var key = _ref2.key,
           domEvent = _ref2.domEvent;
-      console.log("TabSelected:", key, domEvent);
+      // console.log("TabSelected:", key, domEvent);
       onTabClick(key, domEvent);
       setOpen(false);
     },
@@ -67,7 +67,7 @@ function OperationNode(_ref, ref) {
   }));
 
   function selectOffset(offset) {
-    console.log("Setting offset:", offset);
+    //console.log("Setting offset:", offset);
     var enabledTabs = tabs.filter(function (tab) {
       return !tab.disabled;
     });
@@ -88,7 +88,7 @@ function OperationNode(_ref, ref) {
   }
 
   function onKeyDown(e) {
-    console.log("Key down event: ", e);
+    //console.log("Key down event: ", e);
     var which = e.which;
 
     if (!open) {
@@ -124,8 +124,8 @@ function OperationNode(_ref, ref) {
 
 
   useEffect(function () {
-    console.log("selectedKey updated:", selectedKey); // We use query element here to avoid React strict warning
-
+    //console.log("selectedKey updated:", selectedKey);
+    // We use query element here to avoid React strict warning
     var ele = document.getElementById(selectedItemId);
 
     if (ele && ele.scrollIntoView) {
@@ -133,8 +133,7 @@ function OperationNode(_ref, ref) {
     }
   }, [selectedKey]);
   useEffect(function () {
-    console.log("open status: ", open);
-
+    //console.log("open status: ", open);
     if (!open) {
       setSelectedKey(null);
     }
@@ -155,7 +154,7 @@ function OperationNode(_ref, ref) {
     visible: open,
     transitionName: moreTransitionName,
     onVisibleChange: function onVisibleChange(value) {
-      console.log("onVisibleChange: ", value);
+      //console.log("onVisibleChange: ", value); 
       setOpen(value);
     },
     overlayClassName: overlayClassName,
