@@ -1,10 +1,8 @@
 import * as React from 'react';
-// import RcTabs, { TabPane, TabsProps as RcTabsProps, TabPaneProps } from 'rc-tabs';
-// import Tabs as RcTabs, { TabsProps as RcTabsProps } from './Tabs';
-import RcTabs, {TabsProps as RcTabsProps} from "./Tabs";
-import TabPane, { TabPaneProps } from './TabPanelList/TabPane';
+import RcTabs, {TabsProps as RcTabsProps} from "../Tabs";
+import TabPane, { TabPaneProps } from '../TabPanelList/TabPane';
 
-import { EditableConfig } from './interface';
+import { EditableConfig } from '../interface';
 import classNames from 'classnames';
 
 export type TabsType = 'line' | 'card' | 'editable-card';
