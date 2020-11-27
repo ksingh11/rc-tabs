@@ -83,7 +83,7 @@ function parseTabList(children: React.ReactNode): Tab[] {
     .filter(tab => tab);
 }
 
-function Tabs(
+function RcTabs(
   {
     id,
     prefixCls = 'rc-tabs',
@@ -247,7 +247,7 @@ function Tabs(
   );
 }
 
-const ForwardTabs = React.forwardRef(Tabs);
+const ForwardTabs = React.forwardRef(RcTabs);
 
 export type ForwardTabsType = typeof ForwardTabs & { TabPane: typeof TabPane };
 

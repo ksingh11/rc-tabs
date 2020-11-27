@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { TabsProps as RcTabsProps, TabPaneProps } from 'rc-tabs';
+import { TabsProps as RcTabsProps } from "./Tabs";
+import { TabPaneProps } from './TabPanelList/TabPane';
 export declare type TabsType = 'line' | 'card' | 'editable-card';
 export declare type TabsPosition = 'top' | 'right' | 'bottom' | 'left';
 export declare type SizeType = 'small' | 'middle' | 'large' | undefined;
@@ -16,6 +17,6 @@ export interface TabsProps extends Omit<RcTabsProps, 'editable'> {
 }
 declare function Tabs({ type, className, size, onEdit, hideAdd, centered, addIcon, removeIcon, moreIcon, ...props }: TabsProps): JSX.Element;
 declare namespace Tabs {
-    var TabPane: any;
+    var TabPane: typeof import("./TabPanelList/TabPane").default;
 }
 export default Tabs;

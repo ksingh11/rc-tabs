@@ -44,7 +44,7 @@ function parseTabList(children) {
   });
 }
 
-function Tabs(_ref, ref) {
+function RcTabs(_ref, ref) {
   var _classNames;
 
   var id = _ref.id,
@@ -220,6 +220,6 @@ function Tabs(_ref, ref) {
   }))));
 }
 
-var ForwardTabs = /*#__PURE__*/React.forwardRef(Tabs);
+var ForwardTabs = /*#__PURE__*/React.forwardRef(RcTabs);
 ForwardTabs.TabPane = TabPane;
 export default ForwardTabs;

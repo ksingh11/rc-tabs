@@ -1,9 +1,11 @@
 import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
 import _objectWithoutProperties from "@babel/runtime/helpers/esm/objectWithoutProperties";
-import * as React from 'react';
-import RcTabs, { TabPane, TabPaneProps } from 'rc-tabs';
+import * as React from 'react'; // import RcTabs, { TabPane, TabsProps as RcTabsProps, TabPaneProps } from 'rc-tabs';
+// import Tabs as RcTabs, { TabsProps as RcTabsProps } from './Tabs';
+
+import RcTabs from "./Tabs";
+import TabPane from './TabPanelList/TabPane';
 import classNames from 'classnames';
-export { TabPaneProps };
 
 function getPrefixCls(suffixCls, prefixCls) {
   if (prefixCls) return prefixCls;
