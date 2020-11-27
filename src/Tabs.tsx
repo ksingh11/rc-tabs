@@ -33,6 +33,9 @@ import TabContext from './TabContext';
 // Used for accessibility
 let uuid = 0;
 
+export type SizeType = 'small' | 'middle' | 'large' | undefined;
+export type TabsType = 'line' | 'card' | 'editable-card';
+
 export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   className?: string;
@@ -64,6 +67,13 @@ export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'o
   moreIcon?: React.ReactNode;
   /** @private Internal usage. Not promise will rename in future */
   moreTransitionName?: string;
+
+  type?: TabsType;
+  size?: SizeType;
+  hideAdd?: boolean;
+  centered?: boolean;
+  addIcon?: React.ReactNode;
+  onEdit?: (e: React.MouseEvent | React.KeyboardEvent | string, action: 'add' | 'remove') => void;
 }
 
 function parseTabList(children: React.ReactNode): Tab[] {
@@ -83,11 +93,15 @@ function parseTabList(children: React.ReactNode): Tab[] {
     .filter(tab => tab);
 }
 
+const getPrefixCls = (suffixCls?: string, customizePrefixCls?: string) => {
+  if (customizePrefixCls) return customizePrefixCls;
+  return suffixCls ? `ant-${suffixCls}` : 'ant';
+}
+
 function Tabs(
   {
     id,
-    prefixCls = 'rc-tabs',
-    className,
+    prefixCls,
     children,
     direction,
     activeKey,
@@ -109,6 +123,10 @@ function Tabs(
     onChange,
     onTabClick,
     onTabScroll,
+    size,
+    type,
+    centered,
+    className,
     ...restProps
   }: TabsProps,
   ref: React.Ref<HTMLDivElement>,
@@ -219,18 +237,24 @@ function Tabs(
     tabNavBar = <TabNavList {...tabNavBarProps} />;
   }
 
+  // customizable prefix-class
+  const getPrefixCls = (suffixCls?: string, customizePrefixCls?: string) => {
+    if (customizePrefixCls) return customizePrefixCls;
+    return suffixCls ? `ant-${suffixCls}` : 'ant';
+  }
+  prefixCls = getPrefixCls('tabs', prefixCls);
+
   return (
     <TabContext.Provider value={{ tabs, prefixCls }}>
       <div
         ref={ref}
         id={id}
         className={classNames(
-          prefixCls,
-          `${prefixCls}-${mergedTabPosition}`,
           {
-            [`${prefixCls}-mobile`]: mobile,
-            [`${prefixCls}-editable`]: editable,
-            [`${prefixCls}-rtl`]: rtl,
+            [`${prefixCls}-${size}`]: size,
+            [`${prefixCls}-card`]: ['card', 'editable-card'].includes(type as string),
+            [`${prefixCls}-editable-card`]: type === 'editable-card',
+            [`${prefixCls}-centered`]: centered,
           },
           className,
         )}

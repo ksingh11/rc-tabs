@@ -44,13 +44,16 @@ function parseTabList(children) {
   });
 }
 
+var getPrefixCls = function getPrefixCls(suffixCls, customizePrefixCls) {
+  if (customizePrefixCls) return customizePrefixCls;
+  return suffixCls ? "ant-".concat(suffixCls) : 'ant';
+};
+
 function Tabs(_ref, ref) {
   var _classNames;
 
   var id = _ref.id,
-      _ref$prefixCls = _ref.prefixCls,
-      prefixCls = _ref$prefixCls === void 0 ? 'rc-tabs' : _ref$prefixCls,
-      className = _ref.className,
+      prefixCls = _ref.prefixCls,
       children = _ref.children,
       direction = _ref.direction,
       activeKey = _ref.activeKey,
@@ -74,7 +77,11 @@ function Tabs(_ref, ref) {
       onChange = _ref.onChange,
       onTabClick = _ref.onTabClick,
       onTabScroll = _ref.onTabScroll,
-      restProps = _objectWithoutProperties(_ref, ["id", "prefixCls", "className", "children", "direction", "activeKey", "defaultActiveKey", "editable", "animated", "tabPosition", "tabBarGutter", "tabBarStyle", "tabBarExtraContent", "locale", "moreIcon", "moreTransitionName", "destroyInactiveTabPane", "renderTabBar", "onChange", "onTabClick", "onTabScroll"]);
+      size = _ref.size,
+      type = _ref.type,
+      centered = _ref.centered,
+      className = _ref.className,
+      restProps = _objectWithoutProperties(_ref, ["id", "prefixCls", "children", "direction", "activeKey", "defaultActiveKey", "editable", "animated", "tabPosition", "tabBarGutter", "tabBarStyle", "tabBarExtraContent", "locale", "moreIcon", "moreTransitionName", "destroyInactiveTabPane", "renderTabBar", "onChange", "onTabClick", "onTabScroll", "size", "type", "centered", "className"]);
 
   var tabs = parseTabList(children);
   var rtl = direction === 'rtl';
@@ -202,8 +209,15 @@ function Tabs(_ref, ref) {
     tabNavBar = renderTabBar(tabNavBarProps, TabNavList);
   } else {
     tabNavBar = /*#__PURE__*/React.createElement(TabNavList, Object.assign({}, tabNavBarProps));
-  }
+  } // customizable prefix-class
 
+
+  var getPrefixCls = function getPrefixCls(suffixCls, customizePrefixCls) {
+    if (customizePrefixCls) return customizePrefixCls;
+    return suffixCls ? "ant-".concat(suffixCls) : 'ant';
+  };
+
+  prefixCls = getPrefixCls('tabs', prefixCls);
   return /*#__PURE__*/React.createElement(TabContext.Provider, {
     value: {
       tabs: tabs,
@@ -212,7 +226,7 @@ function Tabs(_ref, ref) {
   }, /*#__PURE__*/React.createElement("div", Object.assign({
     ref: ref,
     id: id,
-    className: classNames(prefixCls, "".concat(prefixCls, "-").concat(mergedTabPosition), (_classNames = {}, _defineProperty(_classNames, "".concat(prefixCls, "-mobile"), mobile), _defineProperty(_classNames, "".concat(prefixCls, "-editable"), editable), _defineProperty(_classNames, "".concat(prefixCls, "-rtl"), rtl), _classNames), className)
+    className: classNames((_classNames = {}, _defineProperty(_classNames, "".concat(prefixCls, "-").concat(size), size), _defineProperty(_classNames, "".concat(prefixCls, "-card"), ['card', 'editable-card'].includes(type)), _defineProperty(_classNames, "".concat(prefixCls, "-editable-card"), type === 'editable-card'), _defineProperty(_classNames, "".concat(prefixCls, "-centered"), centered), _classNames), className)
   }, restProps), tabNavBar, /*#__PURE__*/React.createElement(TabPanelList, Object.assign({
     destroyInactiveTabPane: destroyInactiveTabPane
   }, sharedProps, {
