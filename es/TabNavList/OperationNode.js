@@ -150,7 +150,7 @@ function OperationNode(_ref, ref) {
   var moreNode = /*#__PURE__*/React.createElement(Dropdown, {
     prefixCls: dropdownPrefix,
     overlay: menu,
-    trigger: ['hover', 'click'],
+    trigger: ['hover'],
     visible: open,
     transitionName: moreTransitionName,
     onVisibleChange: setOpen,
