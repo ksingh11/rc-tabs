@@ -1,8 +1,6 @@
 import * as React from 'react';
 import TabPane from './TabPanelList/TabPane';
 import { TabPosition, RenderTabBar, TabsLocale, EditableConfig, AnimatedConfig, OnTabScroll, TabBarExtraContent } from './interface';
-export declare type SizeType = 'small' | 'middle' | 'large' | undefined;
-export declare type TabsType = 'line' | 'card' | 'editable-card';
 export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
     prefixCls?: string;
     className?: string;
@@ -27,12 +25,6 @@ export interface TabsProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'o
     moreIcon?: React.ReactNode;
     /** @private Internal usage. Not promise will rename in future */
     moreTransitionName?: string;
-    type?: TabsType;
-    size?: SizeType;
-    hideAdd?: boolean;
-    centered?: boolean;
-    addIcon?: React.ReactNode;
-    onEdit?: (e: React.MouseEvent | React.KeyboardEvent | string, action: 'add' | 'remove') => void;
 }
 declare const ForwardTabs: React.ForwardRefExoticComponent<TabsProps & React.RefAttributes<HTMLDivElement>>;
 export declare type ForwardTabsType = typeof ForwardTabs & {
