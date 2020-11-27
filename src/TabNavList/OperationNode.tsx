@@ -168,7 +168,7 @@ function OperationNode(
     <Dropdown
       prefixCls={dropdownPrefix}
       overlay={menu}
-      trigger={['hover']}
+      trigger={['hover', 'click']}
       visible={open}
       transitionName={moreTransitionName}
       onVisibleChange={setOpen}
