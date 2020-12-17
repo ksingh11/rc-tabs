@@ -44,12 +44,12 @@ function Tabs({ type, className, size, onEdit, hideAdd, centered, addIcon, remov
     };
   }
 
-  console.error(
-    "Warning: ",
-    !('onPrevClick' in props) && !('onNextClick' in props),
-    'Tabs',
-    '`onPrevClick` and `onNextClick` has been removed. Please use `onTabScroll` instead.',
-  );
+  // console.error(
+  //   "Warning: ",
+  //   !('onPrevClick' in props) && !('onNextClick' in props),
+  //   'Tabs',
+  //   '`onPrevClick` and `onNextClick` has been removed. Please use `onTabScroll` instead.',
+  // );
 
   return (
     <RcTabs
